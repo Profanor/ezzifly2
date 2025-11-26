@@ -45,10 +45,10 @@ export default function TrendingDestinations() {
         {/* heading */}
         <div className="flex items-start justify-between mb-8">
           <div className="flex flex-col">
-            <h2 className="text-3xl font-bold text-foreground">
+            <h2 className="text-2xl font-bold text-foreground">
               Trending Destinations
             </h2>
-            <p className="text-sm text-black mt-1">
+            <p className="hidden md:block text-sm text-black mt-1">
               Find the hottest places travelers are exploring right now
             </p>
           </div>

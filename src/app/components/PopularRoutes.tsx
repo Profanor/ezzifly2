@@ -67,16 +67,16 @@ export default function PopularRoutes() {
         {/* heading */}
         <div className="flex items-start justify-between mb-8">
           <div className="flex flex-col">
-            <h2 className="text-3xl font-bold text-foreground">
+            <h2 className="text-2xl font-bold text-foreground">
               Popular Routes
             </h2>
-            <p className="text-sm text-black mt-1">
+            <p className="hidden md:block text-sm text-black mt-1">
               Explore top travel routes chosen by thousands of trusted travelers
               everyday
             </p>
           </div>
 
-          <div className="flex gap-2 mt-1">
+          <div className="flex gap-2">
             <Button
               variant="outline"
               size="icon"

@@ -82,7 +82,7 @@ export default function PopularFlights() {
   return (
     <section className="py-16 px-4 md:px-8 lg:px-12">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-12">
+        <div className="mb-6">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
             Popular Flights From Lagos
           </h2>
@@ -96,12 +96,12 @@ export default function PopularFlights() {
           {flights.map((flight) => (
             <div
               key={flight.id}
-              className="shrink-0 w-64 snap-start group cursor-pointer"
+              className="min-w-[200px] shrink-0 w-64 group cursor-pointer"
             >
-              <div className="relative rounded-xl overflow-hidden h-64 mb-4">
+              <div className="relative rounded-xl overflow-hidden h-48 mb-4">
                 <Image
                   width={200}
-                  height={200}
+                  height={192}
                   src={flight.image || "/placeholder.svg"}
                   alt={`${flight.from} to ${flight.to}`}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"

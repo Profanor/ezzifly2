@@ -65,7 +65,7 @@ export default function Hero() {
         <h1 className="text-white text-2xl sm:text-3xl md:text-5xl font-bold leading-snug">
           Fly Smart. Travel Easier
         </h1>
-        <p className="text-white text-base sm:text-lg mt-2 leading-snug px-2">
+        <p className="text-white text-base sm:text-lg mt-2 leading-snug px-2 hidden md:block">
           Book reliable flights in seconds and move with confidence anywhere you
           go
         </p>
@@ -92,7 +92,7 @@ export default function Hero() {
           <div className="flex justify-between mb-4 gap-2 px-1">
             <button
               className={`flex-1 py-2 rounded-lg border border-white text-white flex items-center justify-center gap-2 ${
-                tripType === "one-way" ? "bg-white/10" : "bg-transparent"
+                tripType === "one-way" ? "bg-white/5" : "bg-transparent"
               }`}
               onClick={() => setTripType("one-way")}
             >
@@ -107,7 +107,7 @@ export default function Hero() {
 
             <button
               className={`flex-1 py-2 rounded-lg border border-white text-white flex items-center justify-center gap-2 ${
-                cabin === "economy" ? "bg-white/10" : "bg-transparent"
+                cabin === "economy" ? "bg-white/5" : "bg-transparent"
               }`}
               onClick={() => setCabin("economy")}
             >
@@ -121,7 +121,6 @@ export default function Hero() {
             </button>
           </div>
 
-          {/* Floating selects - no parent card */}
           <div className="space-y-3 mb-4 px-1">
             <FloatingSelect label="From" value={from} onChange={setFrom} />
             <FloatingSelect label="To" value={to} onChange={setTo} />
@@ -137,7 +136,7 @@ export default function Hero() {
             />
           </div>
 
-          {/* Search Button - outside */}
+          {/* search button */}
           <button
             className="w-full py-3 rounded-lg font-semibold text-white"
             style={{ backgroundColor: "#295B86" }}
