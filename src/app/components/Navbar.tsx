@@ -125,7 +125,7 @@ export default function Navbar() {
             className="px-4 py-2 rounded-sm text-white font-medium md:hidden mr-2"
             style={{ backgroundColor: "#295B86" }}
           >
-            Sign in
+            Sign In or Register
           </Link>
         </div>
       </div>

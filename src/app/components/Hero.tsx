@@ -4,9 +4,49 @@ import Image from "next/image";
 import QuickNav from "./QuickNav";
 import FlightSearch from "./FlightSearchForm";
 import { useState } from "react";
+import { ChevronDown } from "lucide-react";
+
+const FloatingSelect = ({
+  label,
+  value,
+  onChange,
+}: {
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+}) => (
+  <div className="relative border border-gray-300 rounded-lg px-4 pt-4 pb-1 bg-white">
+    <span className="text-xs text-gray-500 absolute left-4 top-1.5">
+      {label}
+    </span>
+
+    <select
+      title="destination"
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      className="mt-3 w-full bg-transparent outline-none appearance-none pr-6"
+    >
+      <option value="">Select</option>
+      <option value="Lagos">Lagos</option>
+      <option value="London">London</option>
+      <option value="Dubai">Dubai</option>
+      <option value="Paris">Paris</option>
+    </select>
+
+    <ChevronDown className="absolute right-3 top-6 w-4 h-4 text-gray-500 pointer-events-none" />
+  </div>
+);
 
 export default function Hero() {
   const [activeTab, setActiveTab] = useState("Flights");
+
+  // Mobile-specific state
+  const [tripType, setTripType] = useState<"one-way" | "round-trip">("one-way");
+  const [cabin, setCabin] = useState<"economy" | "premium">("economy");
+  const [from, setFrom] = useState("");
+  const [to, setTo] = useState("");
+  const [dates, setDates] = useState("");
+  const [travelers, setTravelers] = useState("");
 
   return (
     <section className="relative w-full min-h-[500px] md:min-h-[500px] flex flex-col items-center pt-6 md:pt-12 pb-16">
@@ -31,17 +71,68 @@ export default function Hero() {
         </p>
       </div>
 
-      {/* quickNav and content */}
+      {/* QuickNav + FlightSearch */}
       <div className="relative z-10 flex flex-col gap-6 w-full max-w-5xl mt-3 px-4 text-center">
-        <QuickNav active={activeTab} setActive={setActiveTab} />
+        {/* Desktop view */}
+        <div className="hidden md:flex flex-col gap-6">
+          <QuickNav active={activeTab} setActive={setActiveTab} />
 
-        {activeTab === "Flights" ? (
-          <FlightSearch />
-        ) : (
-          <div className="text-white text-xl font-semibold mt-10">
-            Coming Soon !!!
+          {activeTab === "Flights" ? (
+            <FlightSearch />
+          ) : (
+            <div className="text-white text-xl font-semibold mt-10">
+              Coming Soon !!!
+            </div>
+          )}
+        </div>
+
+        {/* Mobile view */}
+        <div className="md:hidden bg-white rounded-2xl p-4 shadow-lg w-full max-w-md mx-auto">
+          {/* Trip Type + Cabin toggles */}
+          <div className="flex justify-between mb-4 gap-2">
+            <button
+              className={`flex-1 py-2 rounded-lg ${
+                tripType === "one-way"
+                  ? "bg-blue-600 text-white"
+                  : "bg-gray-200 text-gray-700"
+              }`}
+              onClick={() => setTripType("one-way")}
+            >
+              One Way
+            </button>
+            <button
+              className={`flex-1 py-2 rounded-lg ${
+                cabin === "economy"
+                  ? "bg-blue-600 text-white"
+                  : "bg-gray-200 text-gray-700"
+              }`}
+              onClick={() => setCabin("economy")}
+            >
+              Economy
+            </button>
           </div>
-        )}
+
+          {/* Floating selects */}
+          <div className="space-y-3 mb-4">
+            <FloatingSelect label="From" value={from} onChange={setFrom} />
+            <FloatingSelect label="To" value={to} onChange={setTo} />
+            <FloatingSelect
+              label="Travel Dates"
+              value={dates}
+              onChange={setDates}
+            />
+            <FloatingSelect
+              label="Travelers"
+              value={travelers}
+              onChange={setTravelers}
+            />
+          </div>
+
+          {/* Search Button */}
+          <button className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold">
+            Search Flights
+          </button>
+        </div>
       </div>
     </section>
   );

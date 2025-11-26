@@ -83,17 +83,21 @@ export default function PopularFlights() {
     <section className="py-16 px-4 md:px-8 lg:px-12">
       <div className="max-w-7xl mx-auto">
         <div className="mb-12">
-          <h2 className="text-3xl font-bold text-foreground mb-2">
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
             Popular Flights From Lagos
           </h2>
-          <p className="text-[#1E1E1E] text-lg">
+          <p className="hidden md:block text-[#1E1E1E] text-lg">
             Discover the most in-demand destinations flying out of Lagos
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Mobile carousel */}
+        <div className="md:hidden overflow-x-auto -mx-4 px-4 flex gap-4 snap-x snap-mandatory">
           {flights.map((flight) => (
-            <div key={flight.id} className="group cursor-pointer">
+            <div
+              key={flight.id}
+              className="shrink-0 w-64 snap-start group cursor-pointer"
+            >
               <div className="relative rounded-xl overflow-hidden h-64 mb-4">
                 <Image
                   width={200}
@@ -106,32 +110,63 @@ export default function PopularFlights() {
 
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  {/* flight route */}
                   <div className="flex items-center gap-2">
                     <span className="font-semibold text-foreground">
                       {flight.from}
                     </span>
-
                     <Image
                       src="/assets/icons/airplane.svg"
                       alt="Airplane"
                       width={16}
                       height={16}
-                      className="text-muted-foreground"
                     />
-
                     <span className="font-semibold text-foreground">
                       {flight.to}
                     </span>
                   </div>
-
-                  {/* price */}
                   <span className="text-xl font-bold text-red-500">
                     ${flight.price}
                   </span>
                 </div>
+                <div className="text-sm text-[#1E1E1E]">{flight.type}</div>
+              </div>
+            </div>
+          ))}
+        </div>
 
-                {/* flight type */}
+        {/* Desktop grid */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {flights.map((flight) => (
+            <div key={flight.id} className="group cursor-pointer">
+              <div className="relative rounded-xl overflow-hidden h-64 mb-4">
+                <Image
+                  width={200}
+                  height={200}
+                  src={flight.image || "/placeholder.svg"}
+                  alt={`${flight.from} to ${flight.to}`}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="font-semibold text-foreground">
+                      {flight.from}
+                    </span>
+                    <Image
+                      src="/assets/icons/airplane.svg"
+                      alt="Airplane"
+                      width={16}
+                      height={16}
+                    />
+                    <span className="font-semibold text-foreground">
+                      {flight.to}
+                    </span>
+                  </div>
+                  <span className="text-xl font-bold text-red-500">
+                    ${flight.price}
+                  </span>
+                </div>
                 <div className="text-sm text-[#1E1E1E]">{flight.type}</div>
               </div>
             </div>
