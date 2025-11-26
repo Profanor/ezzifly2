@@ -87,33 +87,42 @@ export default function Hero() {
         </div>
 
         {/* Mobile view */}
-        <div className="md:hidden bg-white rounded-2xl p-4 shadow-lg w-full max-w-md mx-auto">
-          {/* Trip Type + Cabin toggles */}
-          <div className="flex justify-between mb-4 gap-2">
+        <div className="md:hidden w-full max-w-md mx-auto">
+          {/* Trip Type + Cabin toggles - on top */}
+          <div className="flex justify-between mb-4 gap-2 px-1">
             <button
-              className={`flex-1 py-2 rounded-lg ${
-                tripType === "one-way"
-                  ? "bg-blue-600 text-white"
-                  : "bg-gray-200 text-gray-700"
+              className={`flex-1 py-2 rounded-lg border border-white text-white flex items-center justify-center gap-2 ${
+                tripType === "one-way" ? "bg-white/10" : "bg-transparent"
               }`}
               onClick={() => setTripType("one-way")}
             >
               One Way
+              <Image
+                src="/assets/chevron-down_white.svg"
+                alt="chevron"
+                width={16}
+                height={16}
+              />
             </button>
+
             <button
-              className={`flex-1 py-2 rounded-lg ${
-                cabin === "economy"
-                  ? "bg-blue-600 text-white"
-                  : "bg-gray-200 text-gray-700"
+              className={`flex-1 py-2 rounded-lg border border-white text-white flex items-center justify-center gap-2 ${
+                cabin === "economy" ? "bg-white/10" : "bg-transparent"
               }`}
               onClick={() => setCabin("economy")}
             >
               Economy
+              <Image
+                src="/assets/chevron-down_white.svg"
+                alt="chevron"
+                width={16}
+                height={16}
+              />
             </button>
           </div>
 
-          {/* Floating selects */}
-          <div className="space-y-3 mb-4">
+          {/* Floating selects - no parent card */}
+          <div className="space-y-3 mb-4 px-1">
             <FloatingSelect label="From" value={from} onChange={setFrom} />
             <FloatingSelect label="To" value={to} onChange={setTo} />
             <FloatingSelect
@@ -128,9 +137,12 @@ export default function Hero() {
             />
           </div>
 
-          {/* Search Button */}
-          <button className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold">
-            Search Flights
+          {/* Search Button - outside */}
+          <button
+            className="w-full py-3 rounded-lg font-semibold text-white"
+            style={{ backgroundColor: "#295B86" }}
+          >
+            Search
           </button>
         </div>
       </div>
