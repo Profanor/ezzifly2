@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -73,13 +74,13 @@ export default function Navbar() {
           </div>
 
           {/* Sign in/Register */}
-          <button
-            type="button"
+          <Link
+            href="/signup"
             className="cursor-pointer px-4 py-2 rounded-sm text-white font-medium"
             style={{ backgroundColor: "#295B86" }}
           >
             Sign In or Register
-          </button>
+          </Link>
         </div>
 
         {/* MOBILE HAMBURGER BUTTON */}
@@ -119,13 +120,13 @@ export default function Navbar() {
             <span className="text-base font-medium">English (NG)</span>
           </div>
 
-          <button
-            type="button"
+          <Link
+            href="/signup"
             className="px-4 py-2 rounded-sm text-white font-medium md:hidden mr-2"
             style={{ backgroundColor: "#295B86" }}
           >
             Sign in
-          </button>
+          </Link>
         </div>
       </div>
     </header>
