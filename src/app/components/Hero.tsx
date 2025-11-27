@@ -58,7 +58,7 @@ export default function Hero() {
         className="object-cover"
         priority
       />
-      <div className="absolute inset-0 bg-black/70"></div>
+      <div className="absolute inset-0 bg-black/60"></div>
 
       {/* headline */}
       <div className="relative z-10 w-full max-w-4xl text-center px-4 md:px-6 mt-6 md:mt-10">
