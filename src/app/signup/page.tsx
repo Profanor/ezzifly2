@@ -7,11 +7,12 @@ export default function SignupPage() {
   const [email, setEmail] = useState("");
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center">
-      <div className="fixed inset-0 -z-10">
+    <div className="relative w-full min-h-screen flex items-center justify-center">
+      {/* Background Image */}
+      <div className="absolute inset-0 -z-10">
         <Image
           src="/assets/new-bg.jpg"
-          alt="background"
+          alt="Background"
           fill
           className="object-cover"
           priority
@@ -19,19 +20,20 @@ export default function SignupPage() {
         <div className="absolute inset-0 bg-black/50"></div>
       </div>
 
-      <div className="bg-white w-full max-w-md mx-4 p-8 rounded-3xl shadow-xl border">
-        {/* Title */}
-        <h2 className="text-2xl font-bold mb-2">Sign In or Register</h2>
-        <p className="text-gray-500 mb-6 text-sm">
+      {/* Card */}
+      <div className="relative z-10 w-full max-w-md mx-4 p-8 rounded-3xl shadow-xl border bg-white flex flex-col">
+        <h2 className="text-2xl font-bold mb-2 text-center">
+          Sign In or Register
+        </h2>
+        <p className="text-gray-500 mb-6 text-sm text-center">
           Manage Your Bookings Easily and Start Your Travels
         </p>
 
-        {/* Email */}
+        {/* Email Input */}
         <div className="mb-5">
           <label className="block text-sm font-medium mb-2 text-gray-700">
             Email Address
           </label>
-
           <input
             type="email"
             placeholder="Enter Your Email Address"
@@ -41,7 +43,7 @@ export default function SignupPage() {
           />
         </div>
 
-        {/* Continue button */}
+        {/* Continue Button */}
         <button className="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-3 rounded-lg transition-all mb-4">
           Continue
         </button>
